@@ -12,57 +12,58 @@ const textos = [
 ];
 
 function novoTexto() {
-    const index = Math.floor(Math.random()*textos.length);
-    texto.textContent=textos[index];
+    const index = Math.floor(Math.random() * textos.length);
+    texto.textContent = textos[index];
 }
+
 
 function atualizarTeste() {
     iniciar()
 
-    if(entrada.value === texto.textContent) {
+    if (entrada.value === texto.textContent) {
         verificar()
     }
 }
 
-function iniciar(){
+function iniciar() {
     const statusDoTeste = JSON.parse(localStorage.getItem("testeEmAndamento"));
 
-    if(!statusDoTeste) {
+    if (!statusDoTeste) {
         localStorage.setItem("tempoInicial", new Date().getTime());
         localStorage.setItem("testeEmAndamento", true);
     }
 }
 
-function verificar(){
+function verificar() {
     const tempoFinal = new Date().getTime()
     const tempoInicial = parseInt(localStorage.getItem("tempoInicial"))
-    const tempoGasto = (tempoFinal-tempoInicial)/1000;
+    const tempoGasto = (tempoFinal - tempoInicial) / 1000;
 
     console.log(tempoGasto)
 
-    resultado.textContent=`Parabéns! Você levou ${tempoGasto.toFixed(2)} segundos`
+    resultado.textContent = `Parabéns! Você levou ${tempoGasto.toFixed(2)} segundos`
 
     adicionarAoHistorico(texto.textContent, tempoGasto)
 
     localStorage.setItem("testeEmAndamento", false);
-    entrada.value="";
+    entrada.value = "";
     novoTexto();
 }
 
-function adicionarAoHistorico(textoDigitado, tempoGasto){
+function adicionarAoHistorico(textoDigitado, tempoGasto) {
     const itemHistorico = document.createElement("p")
 
     itemHistorico.textContent = `Texto ${textoDigitado} - Tempo: ${tempoGasto}`
     historico.appendChild(itemHistorico)
 }
 
-function reiniciarTeste(){
+function reiniciarTeste() {
 
     entrada.value = ""
     resultado.textContent = ""
     novoTexto()
     localStorage.setItem("testeEmAndamento", false);
-    historico.innerHTML="";
+    historico.innerHTML = "";
 
 }
 

@@ -7,7 +7,6 @@ const convertButton = document.querySelector("#convert-btn");
 const messageElement = document.querySelector("#message");
 
 // Função para converter aas unidades
-
 function convert() {
     // Obter os valores das unidades de entrada e saida
     const fromValue = fromElement.value;
