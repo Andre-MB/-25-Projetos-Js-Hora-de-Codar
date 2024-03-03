@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relógio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="cont">
+
+        <div class="dois">
+            <div class="um"></div>
+            <div class="pol"></div>
+        </div>
+
+        <div class="relogio">
+            <div class="display">00:00</div>
+        </div>
+
+    </div>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .relogio {
+            background-color: rgb(0, 0, 0);
+            padding: 45px;
+            border: solid;
+            border-width: 30px;
+            border-color: rgb(65, 215, 167);
+            border-radius: 45px;
+        }
+
+        .display {
+            color: azure;
+            font-size: 10em;
+        }
+
+        .dois {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            margin-right: 38px;
+        }
+
+        .um {
+            width: 150px;
+            height: 80px;
+            background-color: gold;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+        }
+
+        .pol {
+            width: 200px;
+            height: 80px;
+            background-color: rgb(255, 60, 0);
+            margin-left: 20px;
+            border-top-left-radius: 25px;
+            border-top-right-radius: 25px;
+        }
+    </style>
+
+    <script>
+        function papa() {
+
+            var display = document.querySelector('.display')
+
+            var date = new Date();
+
+            //
+
+            var hora = date.getHours()
+
+            var minuto = date.getMinutes()
+
+            var segundo = date.getSeconds()
+
+            //
+
+            if (hora < 10) {
+                hora = '0' + hora
+            }
+
+            if (minuto < 10) {
+                minuto = '0' + minuto
+            }
+
+            if (segundo < 10) {
+                segundo = '0' + segundo
+            }
+
+            //
+
+            var horario = hora + ':' + minuto + ':' + segundo
+
+            display.textContent = horario
+        }
+
+
+
+        setInterval(papa, 1000);
+    </script>
+</body>
+
+</html>
