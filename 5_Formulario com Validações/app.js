@@ -14,7 +14,6 @@ form.addEventListener("submit", (event) => {
         return;
     }
 
-
     // Verifica se o e-mail está preenchido e se é valido
     if (emailInput.value === "" || !isEmailValida(emailInput.value)) {
         alert("Por favor, preencha o seu e-mail")
